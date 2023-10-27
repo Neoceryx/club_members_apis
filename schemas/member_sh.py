@@ -2,5 +2,7 @@ from pydantic import BaseModel
 
 
 class member_schema(BaseModel):
-    username: str
-    password: str
+    id: int
+    name: str
+    email: str
+    nickname: str
