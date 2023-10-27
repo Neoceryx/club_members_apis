@@ -1,8 +1,12 @@
 from fastapi import FastAPI
 import uvicorn
 
-# customs apis
+# To import customs apis
+from routes.members import member_rute
+
 app = FastAPI()
+app.include_router(member_rute)
+
 
 @app.get("/")
 async def hello_world():
