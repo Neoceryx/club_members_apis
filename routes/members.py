@@ -17,6 +17,6 @@ async def get_all(db: Session = Depends(get_db)):
     return member_list
 
 
-# @member_rute.post("/")
-# async def get_by_id_and_password(member: member_schema):
-#     return {"response": "helo"}
+@member_rute.post("/")
+async def get_by_id_and_password(new_member: member_schema, db: Session = Depends(get_db)):
+    return {"response": "helo"}
