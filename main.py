@@ -3,20 +3,15 @@ import uvicorn
 
 # To import customs apis
 from routes.members import member_rute
-from db.models import Base, User
-from db.database import engine, SessionLocal
+from db.models import User
+from db.database import engine, Base, get_db
 from sqlalchemy.orm import Session
 from schemas.member_sh import member_schema
+
 
 # to create the models on the DB
 Base.metadata.create_all(bind=engine)
 
-def get_db():
-    try:
-        db = SessionLocal()
-        yield db
-    finally:
-        db.close()
 
 app = FastAPI()
 app.include_router(member_rute)
