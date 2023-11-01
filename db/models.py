@@ -1,17 +1,20 @@
+import datetime
+
 from sqlalchemy import Column, Integer, String, DateTime, Date, Boolean
 from sqlalchemy.schema import ForeignKey
 from sqlalchemy.orm import relationship
 from db.database import Base
 
 
-class User(Base):
-    __tablename__ = "users"
+class Emergency_Contacts(Base):
+    __tablename__ ="emergency_contacts"
 
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String)
-    email = Column(String)
-    nickname = Column(String)
-
+    members_id = Column(Integer, ForeignKey("members.id", ondelete="CASCADE"))  # Foreign Keys
+    fullname = Column(String, nullable=False)
+    phone_number = Column(String, nullable=False)
+    relationship = Column(String, nullable=False)
+    register_date = Column(DateTime, default=datetime.datetime.now())
 
 class Charges(Base):
     __tablename__ = "charges"
@@ -19,6 +22,7 @@ class Charges(Base):
     id = Column(Integer, primary_key=True, index=True)
     description = Column(String, unique=True, nullable=False)
     members = relationship("Members", backref="charges", cascade="delete, merge") # foreign key
+
 
 class Members(Base):
     __tablename__ = "members"
@@ -34,4 +38,7 @@ class Members(Base):
     image = Column(String)
     birthdate = Column(DateTime)
     is_active = Column(Boolean)
-    register_date = Column(DateTime)
+    register_date = Column(DateTime, default=datetime.datetime.now())
+
+    emergency_contacts = relationship("Emergency_Contacts", backref="members", cascade="delete, merge")
+
