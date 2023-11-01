@@ -18,13 +18,13 @@ class Charges(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     description = Column(String, unique=True, nullable=False)
-    members = relationship("members", backref="charges", cascade="delete, merge") # foreign key
+    members = relationship("Members", backref="charges", cascade="delete, merge") # foreign key
 
 class Members(Base):
     __tablename__ = "members"
 
     id = Column(Integer, primary_key=True, index=True)
-    charges_id = Column(Integer, ForeignKey("charges.id", ondelete="CASCADE")) # Foreign Key
+    charges_id = Column(Integer, ForeignKey("charges.id", ondelete="CASCADE"))  # Foreign Key
     fullname = Column(String, unique=True, nullable=False)
     blood_type = Column(String)
     email = Column(String, unique=True, nullable=False)

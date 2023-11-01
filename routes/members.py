@@ -1,7 +1,9 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 
-# schemas
 from schemas.member_sh import member_schema
+from db.models import Members
+from db.database import get_db
+from sqlalchemy.orm import Session
 
 member_rute = APIRouter(
     prefix="/members",
@@ -10,10 +12,11 @@ member_rute = APIRouter(
 
 
 @member_rute.get("/")
-async def get_all():
-    return {"response": "Getting all members"}
+async def get_all(db: Session = Depends(get_db)):
+    member_list = db.query(Members).all()
+    return member_list
 
 
-@member_rute.post("/")
-async def get_by_id_and_password(member: member_schema):
-    return {"response": "helo"}
+# @member_rute.post("/")
+# async def get_by_id_and_password(member: member_schema):
+#     return {"response": "helo"}
