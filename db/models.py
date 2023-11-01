@@ -10,7 +10,7 @@ class Emergency_Contacts(Base):
     __tablename__ ="emergency_contacts"
 
     id = Column(Integer, primary_key=True, index=True)
-    members_id = Column(Integer, ForeignKey("members.id", ondelete="CASCADE"))  # Foreign Keys
+    members_id = Column(Integer, ForeignKey("members.id", ondelete="CASCADE"), nullable=False)  # Foreign Keys
     fullname = Column(String, nullable=False)
     phone_number = Column(String, nullable=False)
     relationship = Column(String, nullable=False)
@@ -28,7 +28,7 @@ class Members(Base):
     __tablename__ = "members"
 
     id = Column(Integer, primary_key=True, index=True)
-    charges_id = Column(Integer, ForeignKey("charges.id", ondelete="CASCADE"))  # Foreign Key
+    charges_id = Column(Integer, ForeignKey("charges.id", ondelete="CASCADE"), nullable=False)  # Foreign Key
     fullname = Column(String, unique=True, nullable=False)
     blood_type = Column(String)
     email = Column(String, unique=True, nullable=False)

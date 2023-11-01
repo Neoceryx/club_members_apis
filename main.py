@@ -3,7 +3,6 @@ import uvicorn
 
 # To import customs apis
 from routes.members import member_rute
-from db.models import User
 from db.database import engine, Base
 
 # to create the models on the DB
