@@ -6,6 +6,15 @@ from sqlalchemy.orm import relationship
 from db.database import Base
 
 
+class Bikes(Base):
+    __tablename__ = "bikes"
+
+    id = Column(Integer, primary_key=True, index=True)
+    members_id = Column(Integer, ForeignKey("members.id", ondelete="CASCADE"), nullable=False)
+    plate_number = Column(String, nullable=False)
+    register_date = Column(DateTime, default=datetime.datetime.now())
+
+
 class Emergency_Contacts(Base):
     __tablename__ ="emergency_contacts"
 
@@ -41,4 +50,4 @@ class Members(Base):
     register_date = Column(DateTime, default=datetime.datetime.now())
 
     emergency_contacts = relationship("Emergency_Contacts", backref="members", cascade="delete, merge")
-
+    bikes = relationship("Bikes", backref="members", cascade="delete, merge")
