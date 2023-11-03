@@ -38,8 +38,8 @@ async def create_new(new_member: member_schema, db: Session = Depends(get_db)):
     member.register_date = datetime.datetime.now()
 
     # save it on DB
-    db.add(member)
-    db.commit()
-    db.refresh(member)
+    # db.add(member)
+    # db.commit()
+    # db.refresh(member)
 
     return {"response": "helo"}

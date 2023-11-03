@@ -10,5 +10,8 @@ class members_Dal:
     def get_all(self, db: Session):
         return db.query(Members).all()
 
+    def is_fullname_duplicated(self, fullname: str, db: Session):
+        return db.query(Members).count()
+
     pass
     # end class
