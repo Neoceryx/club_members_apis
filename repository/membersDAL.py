@@ -8,8 +8,7 @@ from db.models import Members
 class members_Dal:
 
     def get_all(self, db: Session):
-        member_list = db.query(Members).all()
-        return member_list
-        # end method
+        return db.query(Members).all()
 
+    pass
     # end class
