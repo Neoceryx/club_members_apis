@@ -41,5 +41,9 @@ class members_Dal:
         # return the new member id registered
         return member.id
 
+    def get_by_email_and_password(self, email, password, db: Session):
+        return db.query(Members).filter(Members.email == email, Members.password == password).first()
+        pass
+
     pass
     # end class
