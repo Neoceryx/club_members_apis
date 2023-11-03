@@ -25,9 +25,9 @@ class UsersTestCases(unittest.TestCase):
 
         # create new user values
         new_user = member_schema(charges_id=3,
-                                 fullname="Angel Esteban Fierro Najera",
+                                 fullname="margarita Fierro Najera",
                                  blood_type="A+",
-                                 email="angel.fierro796@gmail.com",
+                                 email="margarita.fierro796@gmail.com",
                                  password="pass",
                                  address="address",
                                  phone_number="phonenumber",
@@ -38,7 +38,8 @@ class UsersTestCases(unittest.TestCase):
         response = client.post("/members"
                                , headers={"Content-Type": "application/json"}
                                , json=dict(new_user))
-        print(response)
+        print(response.content)
+        self.assertEquals(response.content, '{"message":"New member has been created"}')
         pass
 
     pass

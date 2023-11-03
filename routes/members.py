@@ -25,4 +25,14 @@ async def create_new(new_member: member_schema, db: Session = Depends(get_db)):
 
     result = members_bll.new_member(new_member, db)
 
-    return {"response": "helo"}
+    response = dict()
+
+    # Build response
+    if result > 0:
+        response = {"message": "New member has been created"}
+    elif result == -1:
+        response = {"message": "This member is already registered"}
+    elif result == -2:
+        response = {"message": "This email is already registered"}
+
+    return response

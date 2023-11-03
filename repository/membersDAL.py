@@ -40,7 +40,6 @@ class members_Dal:
 
         # return the new member id registered
         return member.id
-        
 
     pass
     # end class

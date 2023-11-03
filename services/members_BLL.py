@@ -25,8 +25,8 @@ class members_Bll:
         if is_fullname_registered == 0:
             if is_email_registered == 0:
 
-                # register new member
-                self.members_Dal.new_member(new_member, db)
+                # register new member and retrieve him id
+                response = self.members_Dal.new_member(new_member, db)
 
             else:
                 response = -2  # email is already registered
