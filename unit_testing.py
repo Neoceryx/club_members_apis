@@ -35,11 +35,9 @@ class UsersTestCases(unittest.TestCase):
                                  birthdate="1993-07-04",
                                  is_active=True)
 
-        new_user2 = dict(new_user)
-
         response = client.post("/members"
                                , headers={"Content-Type": "application/json"}
-                               , json=new_user2)
+                               , json=dict(new_user))
         print(response)
         pass
 
