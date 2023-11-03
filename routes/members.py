@@ -37,7 +37,8 @@ async def create_new(new_member: member_schema, db: Session = Depends(get_db)):
 
     return response
 
-
+# TODO:  perform inner join with 'charges' table to get the charge name also.
 @member_rute.post("/login")
 async def get_by_email_and_password(email: str, password: str, db: Session = Depends(get_db)):
+
     return members_bll.get_by_email_and_password(email, password, db)
