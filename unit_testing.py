@@ -42,16 +42,17 @@ class UsersTestCases(unittest.TestCase):
     #     self.assertEquals(response.content, '{"message":"New member has been created"}')
     #     pass
 
-
-    def get_member_by_email_and_password(self):
+    def test_get_member_by_email_and_password(self):
         client = TestClient(app)
 
         user = {
-            "email": "danie",
-            "password": "1234"
+            "email": "danil.fierro796@gmail.com",
+            "password": "password"
         }
 
-        response = client.post("/members/login", json=user)
+        response = client.post("/members/login",
+                               json=user,
+                               headers={"Content-Type": "application/json"})
         print(response)
         pass
 
