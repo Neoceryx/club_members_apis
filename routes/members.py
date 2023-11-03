@@ -6,15 +6,19 @@ from db.models import Members
 from db.database import get_db
 from sqlalchemy.orm import Session
 
+from repository.membersDAL import members_Dal
+
 member_rute = APIRouter(
     prefix="/members",
     tags=["members"]
 )
 
+members_dal = members_Dal()
+
 
 @member_rute.get("/")
 async def get_all(db: Session = Depends(get_db)):
-    member_list = db.query(Members).all()
+    member_list = members_dal.get_all(db)
     return member_list
 
 

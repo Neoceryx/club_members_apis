@@ -13,14 +13,8 @@ class UsersTestCases(unittest.TestCase):
         print(response.content)
         self.assertEquals(response.status_code, 200)
         pass
-        # end test
-
-    def test_create_new_member(self):
-        client = TestClient(app)
-        print("New Member")
-        pass
-
-
+        #end test
+    
     # End test suite
 
 
