@@ -24,7 +24,10 @@ class members_Bll:
         # Verify member name and email is not duplicated by other member
         if is_fullname_registered == 0:
             if is_email_registered == 0:
-                print("Member info is not registered")
+
+                # register new member
+                self.members_Dal.new_member(new_member, db)
+
             else:
                 response = -2  # email is already registered
         else:
