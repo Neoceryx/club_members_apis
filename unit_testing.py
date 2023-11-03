@@ -27,7 +27,7 @@ class UsersTestCases(unittest.TestCase):
         new_user = member_schema(charges_id=3,
                                  fullname="Angel Esteban Fierro Najera",
                                  blood_type="A+",
-                                 email="danil.fierro796@gmail.com",
+                                 email="angel.fierro796@gmail.com",
                                  password="pass",
                                  address="address",
                                  phone_number="phonenumber",

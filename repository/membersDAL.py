@@ -31,15 +31,16 @@ class members_Dal:
         member.image = new_member.image
         member.birthdate = new_member.birthdate
         member.is_active = new_member.is_active
-        member.register_date = datetime.datetime.now()
+        member.register_date = datetime.now()
 
         # save it on DB
         db.add(member)
         db.commit()
         db.refresh(member)
 
-        qqq = member.id
-        pass
+        # return the new member id registered
+        return member.id
+        
 
     pass
     # end class
