@@ -11,7 +11,7 @@ class members_Dal:
         return db.query(Members).all()
 
     def is_fullname_duplicated(self, fullname: str, db: Session):
-        return db.query(Members).count()
+        return db.query(Members).filter(Members.fullname == fullname).count()
 
     pass
     # end class

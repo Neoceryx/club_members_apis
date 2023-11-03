@@ -15,9 +15,10 @@ class members_Bll:
         return self.members_Dal.get_all(db)
 
 
-    def new_member(self, new_member:member_schema, db:Session):
+    def new_member (self, new_member:member_schema, db:Session):
 
         is_fullname_registered = self.members_Dal.is_fullname_duplicated(new_member.fullname, db)
+        is_email_registered = None
         print(is_fullname_registered)
 
         # validate member name is not duplicated
