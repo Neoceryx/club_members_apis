@@ -23,24 +23,6 @@ async def get_all(db: Session = Depends(get_db)):
 @member_rute.post("/")
 async def create_new(new_member: member_schema, db: Session = Depends(get_db)):
 
-    members_bll.new_member(new_member, db)
-
-    # member = Members()
-    # member.charges_id = new_member.charges_id
-    # member.fullname = new_member.fullname
-    # member.blood_type = new_member.blood_type
-    # member.email = new_member.email
-    # member.password = new_member.password
-    # member.address = new_member.address
-    # member.phone_number = new_member.phone_number
-    # member.image = new_member.image
-    # member.birthdate = new_member.birthdate
-    # member.is_active = new_member.is_active
-    # member.register_date = datetime.datetime.now()
-
-    # save it on DB
-    # db.add(member)
-    # db.commit()
-    # db.refresh(member)
+    result = members_bll.new_member(new_member, db)
 
     return {"response": "helo"}
