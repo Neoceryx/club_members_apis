@@ -18,7 +18,6 @@ class members_Dal:
         return db.query(Members).filter(Members.email == email).count()
 
     def new_member(self, new_member: member_schema, db: Session):
-
         member = Members()
 
         member.charges_id = new_member.charges_id
@@ -42,7 +41,10 @@ class members_Dal:
         return member.id
 
     def get_by_email_and_password(self, email, password, db: Session):
-        return db.query(Members).filter(Members.email == email, Members.password == password).first()
+        return (db.query(Members)
+                .filter(Members.email == email,
+                        Members.password == password,
+                        Members.is_active == True).first())
         pass
 
     pass
