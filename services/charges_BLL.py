@@ -14,7 +14,7 @@ class charge_BLL:
 
     def new_charge(self, new_charge: charge_schema, db: Session):
 
-        new_charge_id = 0
+        response_code = 0
 
         # TODO: Create a common class, with the method to return a correct format for strings, in Camel Case
         new_charge.description = new_charge.description.title()
@@ -23,9 +23,11 @@ class charge_BLL:
 
         # avoid save duplicated charges
         if no_times_registered == 0:
-            new_charge_id = charge_DAL.save_new_charge(new_charge, db)
+            response_code = charge_DAL.save_new_charge(new_charge, db)
+        elif no_times_registered > 0:
+            response_code: -1  # charge description is already registered
 
-        return new_charge_id
+        return response_code
 
 
 
