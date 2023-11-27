@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+﻿from fastapi import APIRouter, Depends
 import datetime
 
 from schemas.member_sh import member_schema
@@ -14,6 +14,7 @@ member_rute = APIRouter(
 
 members_bll = members_Bll()
 
+
 @member_rute.get("/")
 async def get_all(db: Session = Depends(get_db)):
     member_list = members_bll.get_all_members(db)
@@ -22,7 +23,6 @@ async def get_all(db: Session = Depends(get_db)):
 
 @member_rute.post("/")
 async def create_new(new_member: member_schema, db: Session = Depends(get_db)):
-
     result = members_bll.new_member(new_member, db)
 
     response = dict()
@@ -36,3 +36,8 @@ async def create_new(new_member: member_schema, db: Session = Depends(get_db)):
         response = {"message": "This email is already registered"}
 
     return response
+
+# TODO:  perform inner join with 'charges' table to get the charge name also.
+@member_rute.post("/login")
+async def get_by_email_and_password(email: str, password: str, db: Session = Depends(get_db)):
+    return members_bll.get_by_email_and_password(email, password, db)

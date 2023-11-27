@@ -35,5 +35,9 @@ class members_Bll:
 
         return response
 
+    def get_by_email_and_password(self, email, password, db: Session):
+        user = self.members_Dal.get_by_email_and_password(email, password, db)
+        return user
+
     pass
     # end class
