@@ -13,5 +13,4 @@ charge_bll = charge_BLL()
 @charge_rute.get("/")
 async def get_charges(db: Session = Depends(get_db)):
     return charge_bll.get_charges(db)
-    pass
 

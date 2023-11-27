@@ -1,7 +1,8 @@
 from sqlalchemy.orm import Session
 from repository.charges_DAL import charge_DAL
-class charge_BLL:
 
+
+class charge_BLL:
     charge_DAL = None
 
     # Class constructor
