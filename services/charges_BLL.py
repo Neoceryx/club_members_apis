@@ -16,6 +16,10 @@ class charge_BLL:
         # TODO: Create a common class, with the method to return a correct format for strings, in Camel Case
         new_charge.description = new_charge.description.title()
 
+        no_times_registered = self.charge_DAL.get_charge_by_description(new_charge.description, db)
+        print(no_times_registered)
+
+
 
 
 

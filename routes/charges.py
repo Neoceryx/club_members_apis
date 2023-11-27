@@ -18,5 +18,5 @@ async def get_charges(db: Session = Depends(get_db)):
 
 
 @charge_rute.post("/")
-async def create_newone(new_charge: charge_schema, db:Session = Depends(get_db)):
+async def create_newone(new_charge: charge_schema, db: Session = Depends(get_db)):
     return charge_bll.new_charge(new_charge, db)

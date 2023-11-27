@@ -20,5 +20,8 @@ class charge_DAL:
 
         return charge.id  # it will return the new charge saved ID
 
+    def get_charge_by_description(self, description: str, db: Session):
+        return db.query(Charges).filter(Charges.description == description).count()
+
     pass
     # end class
