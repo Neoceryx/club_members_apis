@@ -13,12 +13,19 @@ class charge_BLL:
         return self.charge_DAL.get_all(db)
 
     def new_charge(self, new_charge: charge_schema, db: Session):
+
+        new_charge_id = 0
+
         # TODO: Create a common class, with the method to return a correct format for strings, in Camel Case
         new_charge.description = new_charge.description.title()
 
         no_times_registered = self.charge_DAL.get_charge_by_description(new_charge.description, db)
-        print(no_times_registered)
 
+        # avoid save duplicated charges
+        if no_times_registered == 0:
+            new_charge_id = charge_DAL.save_new_charge(new_charge, db)
+
+        return new_charge_id
 
 
 
