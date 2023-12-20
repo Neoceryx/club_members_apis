@@ -16,7 +16,7 @@ charge_bll = charge_BLL()
 async def get_charges(db: Session = Depends(get_db)):
     return charge_bll.get_charges(db)
 
-
+# TODO: Write unit test for this api. to confirm correct functionality
 @charge_rute.post("/")
 async def create_newone(new_charge: charge_schema, db: Session = Depends(get_db)):
     response_code = charge_bll.new_charge(new_charge, db)
