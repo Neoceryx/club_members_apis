@@ -39,7 +39,7 @@ class members_test_suite(unittest.TestCase):
         print(response.content)
         self.assertEqual(response.status_code, 200)
 
-    def test_3_retrive_member_by_email_and_password(self):
+    def test_3_retrieve_member_by_email_and_password(self):
         user = {
             "email": "margarita.fierro796@gmail.com",
             "password": "pass"
