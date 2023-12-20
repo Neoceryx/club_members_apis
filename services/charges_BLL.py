@@ -23,7 +23,7 @@ class charge_BLL:
 
         # avoid save duplicated charges
         if no_times_registered == 0:
-            response_code = charge_DAL.save_new_charge(new_charge, db)
+            response_code = charge_DAL.save_new_charge(self=self.charge_DAL, new_charge=new_charge, db=db)
         elif no_times_registered > 0:
             response_code: -1  # charge description is already registered
 
