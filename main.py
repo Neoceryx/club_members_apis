@@ -6,6 +6,7 @@ import sentry_sdk
 
 # To import customs apis
 from routes.members import member_rute
+from routes.charges import charge_rute
 from db.database import engine, Base
 
 sentry_sdk.init(
@@ -21,6 +22,7 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 app.include_router(member_rute)
+app.include_router(charge_rute)
 
 @app.get("/sentry-debug")
 async def trigger_error():

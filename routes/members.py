@@ -1,8 +1,5 @@
 ﻿from fastapi import APIRouter, Depends
-import datetime
-
 from schemas.member_sh import member_schema
-from db.models import Members
 from db.database import get_db
 from sqlalchemy.orm import Session
 from services.members_BLL import members_Bll
